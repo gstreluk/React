@@ -1,12 +1,29 @@
 header{
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    width: 100%;
+    /*background-image: -webkit-gradient(linear, left top, left bottom, from(#d6d8d6), to(#444141));
+    background-image: linear-gradient(#d6d8d6, #444141);*/
 }
 
 img{
-    height: 10%;
+    margin-left: 15px;
+    height: 90%;
 }
 
 a{
     margin: 10px;
+    text-decoration: none;
+    color: black;
+
+    
+}
+h1{
+    width: 250px;
+    height: 70%;
+    margin-right:400px;
+    margin-top: 50px;
+    margin-bottom: 25px;
 }

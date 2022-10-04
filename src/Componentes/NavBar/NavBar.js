@@ -1,21 +1,30 @@
 import React from 'react'
 import "./NavBar.css"
 import logo from "../../Assets/logo.jpg"
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import CartWidget from '../CartWidget/CartWidget'
 
 
-const NavBar = () => {
+const NavBar = ({nombre}) => {
+
+  const categorias = [
+  {nombre:"Botines", id:0, ruta:"#"},
+  {nombre:"Zapatillas", id:1, ruta:"#"},
+  {nombre:"Indumentaria", id:2, ruta:"#"},
+  {nombre:"Accesorios", id:3, ruta:"#"},
+  ]
+
   return (
     <header>
         <img src={logo} alt="carrito" />
-        <h1>Titulo</h1>
+        <h1>{nombre}</h1>
         <nav>
-            <a href="">Categoria 1</a>
-            <a href="">Categoria 2</a>
-            <a href="">Categoria 3</a>
-            <a href="">Categoria 4</a>
+          {
+          categorias.map((categoria)=>{
+            return <a key={categoria.id} href={categoria.ruta}>{categoria.nombre}</a> 
+          })
+        }
         </nav>
-        <ShoppingCartIcon fontSize="large"/>
+        <CartWidget/>
     </header>
   )
 }

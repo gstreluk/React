@@ -1,13 +1,17 @@
 import React from "react";
+import ItemListContainer from "./Componentes/ItemListContainer/ItemListContainer";
 import NavBar from "./Componentes/NavBar/NavBar";
-import Header from "./Componentes/NavBar/NavBar";
 
 
 
 const App = () => {
- return (  
+  const nombre ="Calzados Tino"; 
+  const mensaje ="Catálogo de ofertas!";
+ 
+  return (  
      <>
-      <NavBar />
+      <NavBar nombre={nombre}/>
+      <ItemListContainer mensaje={mensaje}/>
           
     </>
   );
