@@ -18,7 +18,7 @@ const App = () => {
       <NavBar nombre={nombre}/>
       <ItemListContainer mensaje={mensaje}/>
       <ComponentesEstados />
-      <ItemCount stock={10} initial={1} onAdd={onAdd}/>
+      {/* <ItemCount stock={10} initial={1} onAdd={onAdd}/> */}
     </>
   );
 };
