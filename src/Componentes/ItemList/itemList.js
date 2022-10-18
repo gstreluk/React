@@ -1,11 +1,16 @@
-import React from 'react'
+import React from 'react';
+import Item from './Item';
 
-const itemList = () => {
+const ItemList = ({lista}) => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <>
+        {
+              lista.map((producto) => {
+                  return <Item key={producto.id} producto= {producto}/>
+              })
+          } 
+    </>
+  );
+};
 
-export default itemList
+export default ItemList
