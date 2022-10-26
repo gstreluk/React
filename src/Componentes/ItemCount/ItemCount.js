@@ -2,7 +2,10 @@ import React from 'react'
 import { useState } from 'react';
 import "./style.css";
 
-
+const onAdd = ()=>{
+    console.log ("Agregaste al carrito");
+  } 
+   
 
 const ItemCount = ({stock, initial, onAdd,}) => {
     

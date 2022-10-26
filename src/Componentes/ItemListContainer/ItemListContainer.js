@@ -1,37 +1,52 @@
 import React, { useEffect, useState } from "react";
 import ItemList from "../ItemList/ItemList";
+import { useParams } from "react-router-dom";
+import { getDocs, collection, query, where } from "firebase/firestore";
+import { db } from "../../../firebase/firebase";
 
 
 
-
-const productos = [
-  {nombre:"Nike", id:0, descripcion:"Phantom GT2 Elite SG-PRO", precio:20000, stock:5, imagen:"Nike.jpg" },
-  {nombre:"Puma", id:1, descripcion:"FUTURE Z 1.3 INSTINCT", precio:18000, stock:4, imagen:"Puma Future.jpg" },
-  {nombre:"Adidas", id:2, descripcion:"X Speedflow .1 FG ‘Messi Unparalleled’", precio:20000, stock:6, imagen:"Adidas X.jpg" },
-  {nombre:"Topper", id:3, descripcion:"Kaiser II Tf", precio:15000, stock:2, imagen:"Topper.jpg" },
-];
-
-const obtenerProductos = new Promise((resolve, reject) => {
-  resolve(productos);
-})
 
 const ItemListContainer = ({mensaje}) => {
-
   const [productos, setProductos] = useState([]);
-    
-  useEffect(()=> {
-    obtenerProductos
-    .then((data)=>{
-    setProductos(data);
-  })
-  }, [])
+  const [loading, setLoading] = useState(true);
+ 
+  const { id } = useParams();
+
+  const URL_BASE = "https://api.storerestapi.com/products";
+  const URL_CAT = `${URL_BASE}/categories/${id}`;
+
+  const productCollection = collection(db, "productos");
+  const q = query(productCollection, where('categories', '==', "women's clothing" ))
+
+  useEffect(() => {
+    getDocs(productCollection)
+    .then((result) => {
+      const listaProductos = result.docs.map((item) => {
+        return {
+          ...item.data(),
+          id: item.id,
+        };
+      });
+      setProductos(listaProductos);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+    .finally(setLoading(false));
+
+    }, [id, URL_BASE, URL_CAT]);
 
   return (
    <>
    <h3>{mensaje}</h3>
-    <ItemList lista={productos}/>
+    {
+      <>
+        {loading ? <h1>Cargando...</h1> : <ItemList lista={productos}/>}
+      </>
+    }
    </>
-  )
-}
+  );
+};
 
 export default ItemListContainer

@@ -7,7 +7,7 @@ header{
     background-image: linear-gradient(#d6d8d6, #6e6a6a);
 }
 
-img{
+.img{
     margin-left: 15px;
     height: 90%;
 }

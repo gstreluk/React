@@ -2,29 +2,35 @@ import React from 'react'
 import "./NavBar.css"
 import logo from "../../Assets/logo.png"
 import CartWidget from '../CartWidget/CartWidget'
+import {Link, NavLink} from "react-router-dom"
 
 
 const NavBar = ({nombre}) => {
 
   const categorias = [
-  {nombre:"Botines", id:0, ruta:"#"},
-  {nombre:"Zapatillas", id:1, ruta:"#"},
-  {nombre:"Indumentaria", id:2, ruta:"#"},
-  {nombre:"Accesorios", id:3, ruta:"#"},
+  {nombre:"Botines", id:0, ruta:"/categoria/Botines"},
+  {nombre:"Zapatillas", id:1, ruta:"/categoria/Zapatillas"},
+  {nombre:"Indumentaria", id:2, ruta:"/categoria/Indumentaria"},
+  {nombre:"Accesorios", id:3, ruta:"/categoria/Accesorios"},
   ]
 
   return (
     <header>
-        <img src={logo} alt="carrito" />
+        <Link to="/">
+          <img src={logo} alt="Tienda virtual" />
+        </Link>
         <h1>{nombre}</h1>
         <nav>
           {
           categorias.map((categoria)=>{
-            return <a key={categoria.id} href={categoria.ruta}>{categoria.nombre}</a> 
+            return <NavLink key={categoria.id} to={categoria.ruta}>{categoria.nombre}</NavLink> 
           })
         }
         </nav>
-        <CartWidget/>
+        <Link to="/cart">
+          <CartWidget/>
+        </Link>
+
     </header>
   )
 }

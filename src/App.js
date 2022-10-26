@@ -1,27 +1,32 @@
 import React from "react";
-import ItemListContainer from "./Componentes/ItemListContainer/ItemListContainer";
 import NavBar from "./Componentes/NavBar/NavBar";
-import ComponentesEstados from "./ComponentesEstados.js"
-import ItemCount from "./Componentes/ItemCount/ItemCount.js"
+import ItemListContainer from "./Componentes/ItemListContainer/ItemListContainer";
+import ItemDetailContainer from "./Componentes/ItemDetailContainer/ItemDetailContainer";
+import Cart from "./Componentes/CartView/Cart";
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+
 
 
 const App = () => {
   const nombre ="Calzados Tino"; 
   const mensaje ="Catálogo de ofertas!";
-
-  const onAdd = ()=>{
-    console.log ("Agregaste al carrito");
-  } 
    
   return (  
      <>
-      <NavBar nombre={nombre}/>
-      <ItemListContainer mensaje={mensaje}/>
-      <ComponentesEstados />
-      {/* <ItemCount stock={10} initial={1} onAdd={onAdd}/> */}
+      <BrowserRouter>
+        <NavBar nombre={nombre} />
+        <Routes>
+          <Route path="/" element={<ItemListContainer mensaje={mensaje} />}/>
+          <Route path="/categoria/:id" element={<ItemListContainer mensaje={mensaje} />} />
+          <Route path="/producto/:id" element={<ItemDetailContainer/>}/>
+          <Route path="/cart" element={<Cart/>}/>
+        </Routes>  
+      </BrowserRouter>
     </>
   );
 };
 
 
 export default App
+
+

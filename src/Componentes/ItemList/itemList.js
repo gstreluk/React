@@ -3,14 +3,24 @@ import Item from './Item';
 
 const ItemList = ({lista}) => {
   return (
-    <>
-        {
-              lista.map((producto) => {
-                  return <Item key={producto.id} producto= {producto}/>
-              })
-          } 
-    </>
+    <div style={styles.container}>
+      {
+        lista.map((producto) => {
+          return <Item key={producto.id} producto={producto} />
+        })
+      }
+    </div>  
   );
 };
+
+const styles = {
+  container:{
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    flexWrap: "wrap",
+  }
+}
 
 export default ItemList
