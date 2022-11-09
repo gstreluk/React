@@ -1,7 +1,7 @@
 [
     {"nombre":"Nike", "id":0, "descripcion":"Phantom GT2 Elite SG-PRO", "precio":20000, "stock":5, "imagen":"{Nike}" },
     {"nombre":"Puma", "id":1, "descripcion":"FUTURE Z 1.3 INSTINCT", "precio":18000, "stock":4, "imagen":"{Puma}" },
-    {"nombre":"Adidas", "id":2, "descripcion":"X Speedflow .1 FG ‘Messi Unparalleled’", "precio":20000, "stock":6, "imagen":"{Adidas}" },
+    {"nombre":"Adidas", "id":2, "descripcion":"X Speedflow .1 FG ‘Messi Unparalleled", "precio":20000, "stock":6, "imagen":"{Adidas}" },
     {"nombre":"Topper", "id":3, "descripcion":"Kaiser II Tf", "precio":15000, "stock":2, "imagen":"{Topper}" }
   ]
   
